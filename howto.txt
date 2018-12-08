@@ -1,0 +1,24 @@
+info:
+https://github.com/VoiSmart/pjsip-android-builder
+https://app.vagrantup.com/gotev/boxes/pjsip-android-builder/versions/1.1
+
+set BASEDIR to /vagrant in config.config
+
+git clone https://github.com/gotev/pjsip-android-builder
+cd pjsip-android-builder
+
+ vagrant init ubuntu/trusty64
+ vagrant up
+
+ vagrant ssh
+cd /vagrant
+
+./prepare-build-system
+
+./build
+
+
+//only include 2 ABI's
+gradle: ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
